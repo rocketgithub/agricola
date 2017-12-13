@@ -1,10 +1,10 @@
 <odoo>
     <data>
 
-        <record model="ir.ui.view" id="view_task_form2_rrhh">
-            <field name="name">project.task.form.rrhh</field>
+        <record model="ir.ui.view" id="view_task_form2_inherited_agricola">
+            <field name="name">project.task.form.inherited.agricola</field>
             <field name="model">project.task</field>
-            <field name="inherit_id" ref="proyect.view_task_form2"/>
+            <field name="inherit_id" ref="hr_timesheet.view_task_form2_inherited"/>
             <field name="arch" type="xml">
                 <field name="progress" position="after">
                     <field name="valor_a_pagar"/>
