@@ -1,0 +1,170 @@
+<openerp>
+    <data>
+
+        <record model="ir.ui.view" id="agricola.catalogos_fincas_tree">
+            <field name="name">agricola.catalogos.fincas.tree</field>
+            <field name="model">agricola.catalogos.fincas</field>
+            <field name="arch" type="xml">
+                <tree string="Fincas">
+                    <field name="name"/>
+                    <field name="descripcion"/>
+                    <field name="partner_id"/>
+		        </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="agricola.catalogos_fincas_form">
+            <field name="name">agricola.catalogos.fincas.form</field>
+            <field name="model">agricola.catalogos.fincas</field>
+            <field name="arch" type="xml">
+                <form string="Fincas">
+				    <group>
+					    <group>
+    				        <field name="name"/>
+                            <field name="partner_id"/>
+					    </group>
+					    <group>
+                            <field name="descripcion"/>
+					    </group>
+					</group>
+					<group>
+                        <field name="areas">
+						    <form string="Areas">
+							    <field name="name"/>
+							    <field name="descripcion"/>
+							</form>
+						    <tree editable="bottom" string="Areas">
+							    <field name="name"/>
+							    <field name="descripcion"/>
+							</tree>
+						</field>
+					</group>
+				</form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="agricola.catalogos_fincas_action_window">
+            <field name="name">Fincas</field>
+            <field name="res_model">agricola.catalogos.fincas</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record model="ir.ui.view" id="agricola.catalogos_areas_tree">
+            <field name="name">agricola.catalogos.areas.tree</field>
+            <field name="model">agricola.catalogos.areas</field>
+            <field name="arch" type="xml">
+                <tree string="Areas">
+                    <field name="name"/>
+                    <field name="descripcion"/>
+                    <field name="finca_id"/>
+		        </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="agricola.catalogos_areas_form">
+            <field name="name">agricola.catalogos.areas.form</field>
+            <field name="model">agricola.catalogos.areas</field>
+            <field name="arch" type="xml">
+                <form string="Areas">
+				    <group>
+					    <group>
+    				        <field name="name"/>
+                            <field name="finca_id"/>
+					    </group>
+					    <group>
+                            <field name="descripcion"/>
+					    </group>
+					</group>
+					<group>
+                        <field name="subareas">
+						    <form string="Sub Areas">
+							    <field name="name"/>
+							    <field name="descripcion"/>
+							</form>
+						    <tree editable="bottom" string="Sub Areas">
+							    <field name="name"/>
+							    <field name="descripcion"/>
+							</tree>
+						</field>
+					</group>
+				</form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="agricola.catalogos_areas_action_window">
+            <field name="name">Areas</field>
+            <field name="res_model">agricola.catalogos.areas</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record model="ir.ui.view" id="agricola.catalogos_subareas_tree">
+            <field name="name">agricola.catalogos.subareas.tree</field>
+            <field name="model">agricola.catalogos.subareas</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="descripcion"/>
+                    <field name="area_id"/>
+		        </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="agricola.catalogos_subareas_form">
+            <field name="name">agricola.catalogos.subareas.form</field>
+            <field name="model">agricola.catalogos.subareas</field>
+            <field name="arch" type="xml">
+                <form string="Sub Areas">
+				    <group>
+					    <group>
+    				        <field name="name"/>
+                            <field name="area_id"/>
+					    </group>
+					    <group>
+                            <field name="descripcion"/>
+					    </group>
+					</group>
+				</form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="agricola.catalogos_subareas_action_window">
+            <field name="name">Sub Areas</field>
+            <field name="res_model">agricola.catalogos.subareas</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="Agricola" id="agricola.menu_root"/>
+        <menuitem name="Catalogos" id="agricola.menu_1" parent="agricola.menu_root"/>
+        <menuitem name="Fincas" id="agricola.menu_fincas_list" parent="agricola.menu_1" action="agricola.catalogos_fincas_action_window"/>
+        <menuitem name="Areas" id="agricola.menu_areas_list" parent="agricola.menu_1" action="agricola.catalogos_areas_action_window"/>
+        <menuitem name="Sub Areas" id="agricola.menu_subareas_list" parent="agricola.menu_1" action="agricola.catalogos_subareas_action_window"/>
+
+        <record id="hr_timesheet_line_form2" model="ir.ui.view">
+            <field name="name">account.analytic.line.form.inherit.hr_timesheet2</field>
+            <field name="model">account.analytic.line</field>
+            <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_form"/>
+            <field name="mode">primary</field>
+            <field name="arch" type="xml">
+                <field name="account_id" position="after">
+                    <field name="subarea_id" required="1"/>
+                    <field name="empleado_id" required="1"/>
+                    <field name="hora_entrada" required="1"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="hr_timesheet_line_tree2" model="ir.ui.view">
+            <field name="name">account.analytic.line.tree.hr_timesheet2</field>
+            <field name="model">account.analytic.line</field>
+            <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_tree"/>
+            <field name="arch" type="xml">
+                <field name="project_id" position="after">
+                    <field name="subarea_id" required="1"/>
+                    <field name="empleado_id" required="1"/>
+                    <field name="hora_entrada" required="1"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</openerp>
