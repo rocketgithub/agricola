@@ -4,7 +4,7 @@ from odoo import models, fields, api
 import zeep
 import logging
 
-class fincas(models.Model):
+class Fincas(models.Model):
     _name = 'agricola.catalogos.fincas'
 
     name = fields.Char("Nombre")
@@ -20,7 +20,6 @@ class Areas(models.Model):
     finca_id = fields.Many2one("agricola.catalogos.fincas", string='Finca', ondelete='restrict')
     subareas = fields.One2many('agricola.catalogos.subareas', 'area_id', string='Sub Areas')
 
-
 class Subareas(models.Model):
     _name = 'agricola.catalogos.subareas'
 
@@ -31,13 +30,11 @@ class Subareas(models.Model):
     @api.multi
     @api.depends('name')
     def name_get(self):
-
         res = []
         for subarea in self:
             name = subarea.name
             res.append((subarea.id, subarea.area_id.finca_id.name + ' - ' + subarea.area_id.name + ' - ' + name))
         return res
-
 
 class Agricola_AccountAnalyticLine(models.Model):
     _inherit = 'account.analytic.line'
@@ -45,3 +42,5 @@ class Agricola_AccountAnalyticLine(models.Model):
     subarea_id = fields.Many2one('agricola.catalogos.subareas', 'Sub Area')
     empleado_id = fields.Many2one('hr.employee', string='Trabajador')
     hora_entrada = fields.Integer('Hora de entrada')
+    produccion = fields.Float('Producción', digits=(16,2))
+    udm_produccion = fields.Many2one('product.uom', string='Unidad de Producción')

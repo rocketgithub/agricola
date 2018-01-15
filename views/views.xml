@@ -9,7 +9,7 @@
                     <field name="name"/>
                     <field name="descripcion"/>
                     <field name="partner_id"/>
-		        </tree>
+                </tree>
             </field>
         </record>
 
@@ -18,28 +18,28 @@
             <field name="model">agricola.catalogos.fincas</field>
             <field name="arch" type="xml">
                 <form string="Fincas">
-				    <group>
-					    <group>
-    				        <field name="name"/>
+                    <group>
+                        <group>
+                            <field name="name"/>
                             <field name="partner_id"/>
-					    </group>
-					    <group>
+                        </group>
+                        <group>
                             <field name="descripcion"/>
-					    </group>
-					</group>
-					<group>
+                        </group>
+                    </group>
+                    <group>
                         <field name="areas">
-						    <form string="Areas">
-							    <field name="name"/>
-							    <field name="descripcion"/>
-							</form>
-						    <tree editable="bottom" string="Areas">
-							    <field name="name"/>
-							    <field name="descripcion"/>
-							</tree>
-						</field>
-					</group>
-				</form>
+                            <form string="Areas">
+                                <field name="name"/>
+                                <field name="descripcion"/>
+                            </form>
+                            <tree editable="bottom" string="Areas">
+                                <field name="name"/>
+                                <field name="descripcion"/>
+                            </tree>
+                        </field>
+                    </group>
+                </form>
             </field>
         </record>
 
@@ -57,7 +57,7 @@
                     <field name="name"/>
                     <field name="descripcion"/>
                     <field name="finca_id"/>
-		        </tree>
+                </tree>
             </field>
         </record>
 
@@ -66,28 +66,28 @@
             <field name="model">agricola.catalogos.areas</field>
             <field name="arch" type="xml">
                 <form string="Areas">
-				    <group>
-					    <group>
-    				        <field name="name"/>
+                    <group>
+                        <group>
+                            <field name="name"/>
                             <field name="finca_id"/>
-					    </group>
-					    <group>
+                        </group>
+                        <group>
                             <field name="descripcion"/>
-					    </group>
-					</group>
-					<group>
+                        </group>
+                    </group>
+                    <group>
                         <field name="subareas">
-						    <form string="Sub Areas">
-							    <field name="name"/>
-							    <field name="descripcion"/>
-							</form>
-						    <tree editable="bottom" string="Sub Areas">
-							    <field name="name"/>
-							    <field name="descripcion"/>
-							</tree>
-						</field>
-					</group>
-				</form>
+                            <form string="Sub Areas">
+                                <field name="name"/>
+                                <field name="descripcion"/>
+                            </form>
+                            <tree editable="bottom" string="Sub Areas">
+                                <field name="name"/>
+                                <field name="descripcion"/>
+                            </tree>
+                        </field>
+                    </group>
+                </form>
             </field>
         </record>
 
@@ -105,7 +105,7 @@
                     <field name="name"/>
                     <field name="descripcion"/>
                     <field name="area_id"/>
-		        </tree>
+                </tree>
             </field>
         </record>
 
@@ -114,16 +114,16 @@
             <field name="model">agricola.catalogos.subareas</field>
             <field name="arch" type="xml">
                 <form string="Sub Areas">
-				    <group>
-					    <group>
-    				        <field name="name"/>
+                    <group>
+                        <group>
+                            <field name="name"/>
                             <field name="area_id"/>
-					    </group>
-					    <group>
+                        </group>
+                        <group>
                             <field name="descripcion"/>
-					    </group>
-					</group>
-				</form>
+                        </group>
+                    </group>
+                </form>
             </field>
         </record>
 
@@ -147,8 +147,10 @@
             <field name="arch" type="xml">
                 <field name="account_id" position="after">
                     <field name="subarea_id" required="1"/>
-                    <field name="empleado_id" required="1"/>
+                    <field name="empleado_id"/>
                     <field name="hora_entrada" required="1"/>
+                    <field name="produccion" required="1"/>
+                    <field name="udm_produccion" required="1"/>
                 </field>
             </field>
         </record>
@@ -160,8 +162,10 @@
             <field name="arch" type="xml">
                 <field name="project_id" position="after">
                     <field name="subarea_id" required="1"/>
-                    <field name="empleado_id" required="1"/>
+                    <field name="empleado_id"/>
                     <field name="hora_entrada" required="1"/>
+                    <field name="produccion" required="1"/>
+                    <field name="udm_produccion" required="1"/>
                 </field>
             </field>
         </record>
