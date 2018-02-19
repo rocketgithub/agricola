@@ -139,36 +139,5 @@
         <menuitem name="Areas" id="agricola.menu_areas_list" parent="agricola.menu_1" action="agricola.catalogos_areas_action_window"/>
         <menuitem name="Sub Areas" id="agricola.menu_subareas_list" parent="agricola.menu_1" action="agricola.catalogos_subareas_action_window"/>
 
-        <record id="hr_timesheet_line_form2" model="ir.ui.view">
-            <field name="name">account.analytic.line.form.inherit.hr_timesheet2</field>
-            <field name="model">account.analytic.line</field>
-            <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_form"/>
-            <field name="mode">primary</field>
-            <field name="arch" type="xml">
-                <field name="account_id" position="after">
-                    <field name="subarea_id" required="1"/>
-                    <field name="empleado_id"/>
-                    <field name="hora_entrada" required="1"/>
-                    <field name="produccion" required="1"/>
-                    <field name="udm_produccion" required="1"/>
-                </field>
-            </field>
-        </record>
-
-        <record id="hr_timesheet_line_tree2" model="ir.ui.view">
-            <field name="name">account.analytic.line.tree.hr_timesheet2</field>
-            <field name="model">account.analytic.line</field>
-            <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_tree"/>
-            <field name="arch" type="xml">
-                <field name="project_id" position="after">
-                    <field name="subarea_id" required="1"/>
-                    <field name="empleado_id"/>
-                    <field name="hora_entrada" required="1"/>
-                    <field name="produccion" required="1"/>
-                    <field name="udm_produccion" required="1"/>
-                </field>
-            </field>
-        </record>
-
     </data>
 </openerp>

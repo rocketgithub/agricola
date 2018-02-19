@@ -1,0 +1,40 @@
+<openerp>
+    <data>
+
+        <record id="hr_timesheet_line_form2" model="ir.ui.view">
+            <field name="name">account.analytic.line.form.inherit.hr_timesheet2</field>
+            <field name="model">account.analytic.line</field>
+            <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_form"/>
+            <field name="mode">primary</field>
+            <field name="arch" type="xml">
+                <field name="account_id" position="after">
+                    <field name="subarea_id" required="1"/>
+                    <field name="empleado_id"/>
+                    <field name="hora_entrada" required="1" widget="float_time"/>
+                    <field name="produccion"/>
+                    <field name="udm_produccion"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="hr_timesheet_line_tree2" model="ir.ui.view">
+            <field name="name">account.analytic.line.tree.hr_timesheet2</field>
+            <field name="model">account.analytic.line</field>
+            <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_tree"/>
+            <field name="arch" type="xml">
+                <field name="project_id" position="after">
+                    <field name="subarea_id" required="1"/>
+                    <field name="empleado_id"/>
+                </field>
+                <field name="unit_amount" position="before">
+                    <field name="hora_entrada" required="1" widget="float_time"/>
+                </field>
+                <field name="unit_amount" position="after">
+                    <field name="produccion"/>
+                    <field name="udm_produccion"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</openerp>

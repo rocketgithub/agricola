@@ -36,11 +36,3 @@ class Subareas(models.Model):
             res.append((subarea.id, subarea.area_id.finca_id.name + ' - ' + subarea.area_id.name + ' - ' + name))
         return res
 
-class Agricola_AccountAnalyticLine(models.Model):
-    _inherit = 'account.analytic.line'
-
-    subarea_id = fields.Many2one('agricola.catalogos.subareas', 'Sub Area')
-    empleado_id = fields.Many2one('hr.employee', string='Trabajador')
-    hora_entrada = fields.Integer('Hora de entrada')
-    produccion = fields.Float('Producción', digits=(16,2))
-    udm_produccion = fields.Many2one('product.uom', string='Unidad de Producción')

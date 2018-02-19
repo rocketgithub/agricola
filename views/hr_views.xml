@@ -1,0 +1,16 @@
+<openerp>
+    <data>
+
+        <record id="agricola.view_employee_form" model="ir.ui.view">
+            <field name="name">agricola.hr.employee.form</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <field name="address_id" position="before">
+                    <field name="codigo_empleado"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</openerp>

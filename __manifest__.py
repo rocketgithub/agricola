@@ -17,8 +17,9 @@
     'depends': ['base', 'hr_timesheet'],
 
     'data': [
-        'views/views.xml',
-        'views/templates.xml',
-        'views/proyect.xml',
+        'views/agricola_views.xml',
+        'views/account_views.xml',
+        'views/hr_views.xml',
+        'views/proyect_views.xml',
     ],
 }
