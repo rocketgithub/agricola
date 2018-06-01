@@ -23,6 +23,7 @@
             <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_tree"/>
             <field name="arch" type="xml">
                 <field name="project_id" position="after">
+                    <field name="area_id"/>
                     <field name="subarea_id" required="1"/>
                     <field name="empleado_id"/>
                 </field>

@@ -1,0 +1,16 @@
+<openerp>
+  <data>
+
+        <record model="ir.ui.view" id="view_hr_payslip_form_agricola">
+            <field name="name">hr.payslip.form.agricola</field>
+            <field name="model">hr.payslip</field>
+            <field name="inherit_id" ref="hr_payroll.view_hr_payslip_form"/>
+            <field name="arch" type="xml">
+                <field name="payslip_run_id" position="after">
+                    <field name="domingos"/>
+                </field>
+            </field>
+        </record>
+
+  </data>
+</openerp>

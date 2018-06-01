@@ -9,6 +9,7 @@
                 <data>
                     <field name="planned_hours" position="after">
                         <field name="valor_a_pagar"/>
+                        <field name="codigo"/>
                     </field>
                     <field name="progress" position="after">
                         <field name="udm_valor_a_pagar_id" options="{'no_create': True, 'no_open': True}"/>
