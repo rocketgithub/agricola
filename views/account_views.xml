@@ -10,6 +10,7 @@
                 <field name="account_id" position="after">
                     <field name="subarea_id" required="1"/>
                     <field name="empleado_id"/>
+                    <field name="finca_id"/>
                     <field name="hora_entrada" required="1" widget="float_time"/>
                     <field name="produccion"/>
                     <field name="udm_produccion"/>
@@ -26,6 +27,7 @@
                     <field name="area_id"/>
                     <field name="subarea_id" required="1"/>
                     <field name="empleado_id"/>
+                    <field name="finca_id"/>
                 </field>
                 <field name="unit_amount" position="before">
                     <field name="hora_entrada" required="1" widget="float_time"/>
