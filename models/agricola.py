@@ -36,3 +36,7 @@ class Subareas(models.Model):
             res.append((subarea.id, subarea.area_id.finca_id.name + ' - ' + subarea.area_id.name + ' - ' + name))
         return res
 
+class DuracionTarea(models.Model):
+    _name = 'agricola.catalogos.duracion_tarea'
+
+    name = fields.Char("Nombre", required=True)
