@@ -133,11 +133,43 @@
             <field name="view_mode">tree,form</field>
         </record>
 
+        
+        <record model="ir.ui.view" id="agricola.catalogos_duracion_tarea_tree">
+            <field name="name">agricola.catalogos.duracion_tarea.tree</field>
+            <field name="model">agricola.catalogos.duracion_tarea</field>
+            <field name="arch" type="xml">
+                <tree string="Duración de la tarea">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="agricola.catalogos_duracion_tarea_form">
+            <field name="name">agricola.catalogos.duracion_tarea.form</field>
+            <field name="model">agricola.catalogos.duracion_tarea</field>
+            <field name="arch" type="xml">
+                <form string="Duración de la tarea">
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="agricola.catalogos_duracion_tarea_action_window">
+            <field name="name">Duración de la tarea</field>
+            <field name="res_model">agricola.catalogos.duracion_tarea</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
         <menuitem name="Agricola" id="agricola.menu_root"/>
         <menuitem name="Catalogos" id="agricola.menu_1" parent="agricola.menu_root"/>
         <menuitem name="Fincas" id="agricola.menu_fincas_list" parent="agricola.menu_1" action="agricola.catalogos_fincas_action_window"/>
         <menuitem name="Areas" id="agricola.menu_areas_list" parent="agricola.menu_1" action="agricola.catalogos_areas_action_window"/>
         <menuitem name="Sub Areas" id="agricola.menu_subareas_list" parent="agricola.menu_1" action="agricola.catalogos_subareas_action_window"/>
+        <menuitem name="Duración tareas" id="agricola.menu_duracion_tarea_list" parent="agricola.menu_1" action="agricola.catalogos_duracion_tarea_action_window"/>
 
     </data>
 </openerp>
