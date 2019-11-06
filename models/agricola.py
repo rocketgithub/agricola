@@ -28,12 +28,16 @@ class Subareas(models.Model):
     area_id = fields.Many2one("agricola.catalogos.areas", string='Area', ondelete='restrict')
 
     @api.multi
-    @api.depends('name')
     def name_get(self):
         res = []
         for subarea in self:
-            name = subarea.name
-            res.append((subarea.id, subarea.area_id.finca_id.name + ' - ' + subarea.area_id.name + ' - ' + name))
+            name = []
+            if subarea.area_id:
+                if subarea.area_id.finca_id:
+                    name.append(subarea.area_id.finca_id.name or "")
+                name.append(subarea.area_id.name or "")
+            name.append(subarea.name or "")
+            res.append((subarea.id, " - ".join(name)))
         return res
 
 class DuracionTarea(models.Model):
