@@ -1,2 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_agricola_agricola,agricola.agricola,model_agricola_agricola,,1,0,0,0
+agricola_catalogo_fincas,agricola_catalogo_fincas,agricola.model_agricola_catalogos_fincas,base.group_user,1,1,1,1
+agricola_catalogo_areas,agricola_catalogo_areas,agricola.model_agricola_catalogos_areas,base.group_user,1,1,1,1
+agricola_catalogo_subareas,agricola_catalogo_subareas,agricola.model_agricola_catalogos_subareas,base.group_user,1,1,1,1
+agricola_catalogo_duracion_tarea,agricola_catalogo_duracion_tarea,agricola.model_agricola_catalogos_duracion_tarea,base.group_user,1,1,1,1

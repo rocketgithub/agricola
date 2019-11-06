@@ -20,7 +20,7 @@
                 <form string="Fincas">
                     <group>
                         <group>
-                            <field name="name"/>
+                            <field name="name" required="1"/>
                             <field name="partner_id"/>
                         </group>
                         <group>
@@ -30,11 +30,11 @@
                     <group>
                         <field name="areas">
                             <form string="Areas">
-                                <field name="name"/>
+                                <field name="name" required="1"/>
                                 <field name="descripcion"/>
                             </form>
                             <tree editable="bottom" string="Areas">
-                                <field name="name"/>
+                                <field name="name" required="1"/>
                                 <field name="descripcion"/>
                             </tree>
                         </field>
@@ -68,8 +68,8 @@
                 <form string="Areas">
                     <group>
                         <group>
-                            <field name="name"/>
-                            <field name="finca_id"/>
+                            <field name="name" required="1"/>
+                            <field name="finca_id" required="1"/>
                         </group>
                         <group>
                             <field name="descripcion"/>
@@ -78,11 +78,11 @@
                     <group>
                         <field name="subareas">
                             <form string="Sub Areas">
-                                <field name="name"/>
+                                <field name="name" required="1"/>
                                 <field name="descripcion"/>
                             </form>
                             <tree editable="bottom" string="Sub Areas">
-                                <field name="name"/>
+                                <field name="name" required="1"/>
                                 <field name="descripcion"/>
                             </tree>
                         </field>
@@ -116,8 +116,8 @@
                 <form string="Sub Areas">
                     <group>
                         <group>
-                            <field name="name"/>
-                            <field name="area_id"/>
+                            <field name="name" required="1"/>
+                            <field name="area_id" required="1"/>
                         </group>
                         <group>
                             <field name="descripcion"/>
@@ -151,7 +151,7 @@
                 <form string="Duración de la tarea">
                     <group>
                         <group>
-                            <field name="name"/>
+                            <field name="name" required="1"/>
                         </group>
                     </group>
                 </form>
@@ -164,12 +164,12 @@
             <field name="view_mode">tree,form</field>
         </record>
 
-        <menuitem name="Agricola" id="agricola.menu_root"/>
-        <menuitem name="Catalogos" id="agricola.menu_1" parent="agricola.menu_root"/>
-        <menuitem name="Fincas" id="agricola.menu_fincas_list" parent="agricola.menu_1" action="agricola.catalogos_fincas_action_window"/>
-        <menuitem name="Areas" id="agricola.menu_areas_list" parent="agricola.menu_1" action="agricola.catalogos_areas_action_window"/>
-        <menuitem name="Sub Areas" id="agricola.menu_subareas_list" parent="agricola.menu_1" action="agricola.catalogos_subareas_action_window"/>
-        <menuitem name="Duración tareas" id="agricola.menu_duracion_tarea_list" parent="agricola.menu_1" action="agricola.catalogos_duracion_tarea_action_window"/>
+        <menuitem name="Agricola" id="agricola.menu_root" groups="base.group_user"/>
+        <menuitem name="Catalogos" id="agricola.menu_1" parent="agricola.menu_root" groups="base.group_user"/>
+        <menuitem name="Fincas" id="agricola.menu_fincas_list" parent="agricola.menu_1" action="agricola.catalogos_fincas_action_window" groups="base.group_user"/>
+        <menuitem name="Areas" id="agricola.menu_areas_list" parent="agricola.menu_1" action="agricola.catalogos_areas_action_window" groups="base.group_user"/>
+        <menuitem name="Sub Areas" id="agricola.menu_subareas_list" parent="agricola.menu_1" action="agricola.catalogos_subareas_action_window" groups="base.group_user"/>
+        <menuitem name="Duración tareas" id="agricola.menu_duracion_tarea_list" parent="agricola.menu_1" action="agricola.catalogos_duracion_tarea_action_window" groups="base.group_user"/>
 
     </data>
 </openerp>

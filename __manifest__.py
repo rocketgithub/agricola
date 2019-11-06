@@ -21,5 +21,6 @@
         'views/account_views.xml',
         'views/proyect_views.xml',
         'views/hr_payroll_views.xml',
+        'security/ir.model.access.csv',
     ],
 }
