@@ -7,6 +7,9 @@
             <field name="inherit_id" ref="hr_timesheet.view_task_form2_inherited"/>
             <field name="arch" type="xml">
                 <data>
+                    <field name="project_id" position="replace">
+                        <field name="project_id" required="1"/>
+                    </field>
                     <field name="planned_hours" position="after">
                         <field name="valor_a_pagar"/>
                         <field name="codigo"/>
