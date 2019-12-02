@@ -7,7 +7,7 @@
             <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_form"/>
             <field name="mode">primary</field>
             <field name="arch" type="xml">
-                <field name="account_id" position="after">
+                <field name="currency_id" position="after">
                     <field name="subarea_id" required="1"/>
                     <field name="empleado_id"/>
                     <field name="finca_id"/>

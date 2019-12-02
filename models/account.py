@@ -12,5 +12,5 @@ class Agricola_AccountAnalyticLine(models.Model):
     empleado_id = fields.Many2one('hr.employee', string='Trabajador')
     hora_entrada = fields.Float('Hora de entrada', default=0.0)
     produccion = fields.Float('Producción', digits=(16,2))
-    udm_produccion = fields.Many2one('product.uom', string='Unidad de Producción')
+    udm_produccion = fields.Many2one('uom.uom', string='Unidad de Producción')
     finca_id = fields.Many2one('agricola.catalogos.fincas',related="area_id.finca_id",store=True,string="Finca")
