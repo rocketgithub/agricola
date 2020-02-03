@@ -13,8 +13,8 @@ class HrPayslip(models.Model):
         cantidad_domingos = 0
         contador = 0
         for payslip in self:
-            fecha_desde =  datetime.datetime.strptime(payslip.date_from,"%Y-%m-%d")
-            fecha_hasta = datetime.datetime.strptime(payslip.date_to,"%Y-%m-%d")
+            fecha_desde =  datetime.datetime.strptime(str(payslip.date_from),"%Y-%m-%d")
+            fecha_hasta = datetime.datetime.strptime(str(payslip.date_to),"%Y-%m-%d")
             now = datetime.datetime.now()
             cantidad_dias = fecha_hasta - fecha_desde
             cantidad_dias = cantidad_dias.days
@@ -45,9 +45,10 @@ class HrPayslip(models.Model):
         #         'amount': (i.task_id.valor_a_pagar )* i.unit_amount,
         #     }
         #     lista.append(linea)
+        logging.warn('jeje')
         self.env.cr.execute('select al.date,sum(al.unit_amount) as unit_amount, sum(pt.valor_a_pagar * al.unit_amount) as valor_a_pagar,al.task_id, al.empleado_id,pt.name,pt.codigo '\
             'from account_analytic_line al join project_task pt on(pt.id = al.task_id) where al.empleado_id = %s and al.date >=%s and al.date <= %s'\
-            'group by al.task_id,al.date,al.empleado_id,pt.name, pt.codigo',(empleado_id,date_from,date_to))
+            'group by al.task_id,al.date,al.empleado_id,pt.name, pt.codigo',(empleado_id,str(date_from),str(date_to)))
         for i in self.env.cr.dictfetchall():
             linea = {
                 'task_id': i['task_id'],
@@ -87,7 +88,8 @@ class HrPayslip(models.Model):
 
     def get_worked_day_lines(self, contract_ids, date_from, date_to):
         data = super(HrPayslip, self).get_worked_day_lines(contract_ids, date_from, date_to)
-        for contract in self.env['hr.contract'].browse(contract_ids).filtered(lambda contract: contract.working_hours):
+        # for contract in self.env['hr.contract'].browse(contract_ids).filtered(lambda contract: contract.resource_calendar_id):
+        for contract in contract_ids:
             datos = self.get_worked_day_task_lines(contract.id, contract.employee_id.id, date_from, date_to)
             for i in datos:
                 data.append({
@@ -103,7 +105,8 @@ class HrPayslip(models.Model):
 
     def get_inputs(self, contract_ids, date_from, date_to):
         res = super(HrPayslip, self).get_inputs(contract_ids, date_from, date_to)
-        for contract in self.env['hr.contract'].browse(contract_ids).filtered(lambda contract: contract.working_hours):
+        # for contract in self.env['hr.contract'].browse(contract_ids).filtered(lambda contract: contract.working_hours):
+        for contract in contract_ids:
             datos = self.get_worked_day_task_lines(contract.id, contract.employee_id.id, date_from, date_to)
             for r in res:
                 for d in datos:
