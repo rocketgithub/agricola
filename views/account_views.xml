@@ -9,7 +9,7 @@
             <field name="arch" type="xml">
                 <field name="currency_id" position="after">
                     <field name="subarea_id" required="1"/>
-                    <field name="empleado_id"/>
+<!--                    <field name="empleado_id"/>-->
                     <field name="finca_id"/>
                     <field name="hora_entrada" required="1" widget="float_time"/>
                     <field name="produccion"/>
@@ -26,7 +26,7 @@
                 <field name="project_id" position="after">
                     <field name="area_id"/>
                     <field name="subarea_id" required="1"/>
-                    <field name="empleado_id"/>
+<!--                    <field name="empleado_id"/>-->
                     <field name="finca_id"/>
                 </field>
                 <field name="unit_amount" position="before">
@@ -39,6 +39,7 @@
             </field>
         </record>
 
+<!--
         <record id="agricola_timesheet_view_tree_user" model="ir.ui.view">
             <field name="name">agricola.account.analytic.line.tree.hr_timesheet2</field>
             <field name="model">account.analytic.line</field>
@@ -62,6 +63,7 @@
                 </field>
             </field>
         </record>
+-->
 
     </data>
 </openerp>
