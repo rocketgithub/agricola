@@ -112,3 +112,8 @@ class HrPayslip(models.Model):
                     if d['code'] == r['code']:
                         r['amount'] = d['amount']
         return res
+
+class HrPayslipRun(models.Model):
+    _inherit = 'hr.payslip.run'
+
+    asuetos = fields.Integer('Asuetos')        
