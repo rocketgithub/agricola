@@ -46,7 +46,7 @@ class HrPayslip(models.Model):
         #     }
         #     lista.append(linea)
         self.env.cr.execute('select al.date,sum(al.unit_amount) as unit_amount, sum(pt.valor_a_pagar * al.unit_amount) as valor_a_pagar,al.task_id, al.empleado_id,pt.name,pt.codigo '\
-            'from account_analytic_line al join project_task pt on(pt.id = al.task_id) where al.empleado_id = %s and al.date >=%s and al.date <= %s'\
+            'from account_analytic_line al join project_task pt on(pt.id = al.task_id) where al.employee_id = %s and al.date >=%s and al.date <= %s'\
             'group by al.task_id,al.date,al.empleado_id,pt.name, pt.codigo',(empleado_id,str(date_from),str(date_to)))
         for i in self.env.cr.dictfetchall():
             linea = {
@@ -116,4 +116,4 @@ class HrPayslip(models.Model):
 class HrPayslipRun(models.Model):
     _inherit = 'hr.payslip.run'
 
-    asuetos = fields.Integer('Asuetos')        
+    asuetos = fields.Integer('Asuetos')
