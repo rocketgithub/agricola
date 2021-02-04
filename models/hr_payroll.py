@@ -110,7 +110,7 @@ class HrPayslip(models.Model):
             for r in res:
                 for d in datos:
                     if d['code'] == r['code']:
-                        r['amount'] = d['amount']
+                        r['amount'] = d['horas_trabajadas']
         return res
 
 class HrPayslipRun(models.Model):
