@@ -3,6 +3,7 @@
 from odoo import models, fields, api
 import datetime
 import logging
+from odoo.addons import decimal_precision as dp
 
 class HrPayslip(models.Model):
     _inherit = 'hr.payslip'
@@ -117,3 +118,18 @@ class HrPayslipRun(models.Model):
     _inherit = 'hr.payslip.run'
 
     asuetos = fields.Integer('Asuetos')
+
+class AccountAnalyticLine(models.Model):
+    _inherit = 'account.analytic.line'
+
+    unit_amount = fields.Float(digits=dp.get_precision('Payroll Rate'))
+
+class HrPayslipInput(models.Model):
+    _inherit = 'hr.payslip.input'
+
+    amount = fields.Float(digits=dp.get_precision('Payroll Rate'))
+
+class HrPayslipWorkedDays(models.Model):
+    _inherit = 'hr.payslip.worked_days'
+
+    number_of_hours = fields.Float(digits=dp.get_precision('Payroll Rate'))
