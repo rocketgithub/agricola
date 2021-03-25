@@ -91,15 +91,16 @@ class HrPayslip(models.Model):
         # for contract in self.env['hr.contract'].browse(contract_ids).filtered(lambda contract: contract.resource_calendar_id):
         for contract in contract_ids:
             datos = self.get_worked_day_task_lines(contract.id, contract.employee_id.id, date_from, date_to)
-            for i in datos:
-                data.append({
-                    'name': i['task_name'],
-                    'sequence': 10,
-                    'code': i['code'],
-                    'number_of_days': i['dias_trabajados'],
-                    'number_of_hours': i['horas_trabajadas'],
-                    'contract_id': contract.id,
-                })
+            if datos:
+                for i in datos:
+                    data.append({
+                        'name': i['task_name'],
+                        'sequence': 10,
+                        'code': i['code'],
+                        'number_of_days': i['dias_trabajados'],
+                        'number_of_hours': i['horas_trabajadas'],
+                        'contract_id': contract.id,
+                    })
         return data
 
 
