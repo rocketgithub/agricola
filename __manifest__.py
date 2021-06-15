@@ -8,18 +8,17 @@
          Módulo para RRHH de empresas agropecuarias
     """,
 
-    'author': "Rodolfo Borstcheff",
+    'author': "Aquih S.A.",
     'website': "http://www.aquih.com",
 
     'category': 'Uncategorized',
     'version': '0.1',
 
-    'depends': ['base','rrhh','hr_timesheet','hr_payroll'],
+    'depends': ['base','hr_timesheet','hr_payroll'],
 
     'data': [
         'views/agricola_views.xml',
         'views/account_views.xml',
-        'views/hr_views.xml',
         'views/proyect_views.xml',
         'views/hr_payroll_views.xml',
         'security/ir.model.access.csv',
