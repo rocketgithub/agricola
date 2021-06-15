@@ -27,7 +27,6 @@ class Subareas(models.Model):
     descripcion = fields.Char("Descripcion")
     area_id = fields.Many2one("agricola.catalogos.areas", string='Area', ondelete='restrict')
 
-    @api.multi
     def name_get(self):
         res = []
         for subarea in self:

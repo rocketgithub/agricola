@@ -18,7 +18,7 @@
             <field name="inherit_id" ref="hr_payroll.hr_payslip_run_form"/>
             <field name="arch" type="xml">
                 <data>
-                    <field name="journal_id" position="after">
+                    <field name="credit_note" position="after">
                         <field name="asuetos"/>
                     </field>
                 </data>
