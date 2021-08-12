@@ -1,4 +1,4 @@
-<openerp>
+<odoo>
     <data>
 
         <record id="hr_timesheet_line_form2" model="ir.ui.view">
@@ -53,4 +53,4 @@
         </record>
 
     </data>
-</openerp>
+</odoo>
