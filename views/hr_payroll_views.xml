@@ -1,4 +1,4 @@
-<openerp>
+<odoo>
   <data>
 
         <record model="ir.ui.view" id="view_hr_payslip_form_agricola">
@@ -26,4 +26,4 @@
         </record>
 
   </data>
-</openerp>
+</odoo>

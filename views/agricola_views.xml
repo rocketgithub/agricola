@@ -1,4 +1,4 @@
-<openerp>
+<odoo>
     <data>
 
         <record model="ir.ui.view" id="agricola.catalogos_fincas_tree">
@@ -133,7 +133,7 @@
             <field name="view_mode">tree,form</field>
         </record>
 
-        
+
         <record model="ir.ui.view" id="agricola.catalogos_duracion_tarea_tree">
             <field name="name">agricola.catalogos.duracion_tarea.tree</field>
             <field name="model">agricola.catalogos.duracion_tarea</field>
@@ -172,4 +172,4 @@
         <menuitem name="Duración tareas" id="agricola.menu_duracion_tarea_list" parent="agricola.menu_1" action="agricola.catalogos_duracion_tarea_action_window" groups="base.group_user"/>
 
     </data>
-</openerp>
+</odoo>

@@ -28,24 +28,7 @@ class HrPayslip(models.Model):
             payslip.domingos = cantidad_domingos
 
     def get_worked_day_task_lines(self,contract, empleado_id, date_from, date_to):
-        # partes_de_horas = self.env['account.analytic.line'].search([['user_id', '=', user_id],['date','>=',date_from],['date','<=',date_to],['task_id','!=',False]])
         lista = []
-        # for i in partes_de_horas:
-        #     fechas = {
-        #     'task_id': i.task_id.id,
-        #     'date': i.date,
-        #     }
-        #     fechas_lista.append(fechas)
-        #     linea = {
-        #         'task_id': i.task_id.id,
-        #         'date': i.date,
-        #         'task_name': i.task_id.name,
-        #         'code': i.task_id.codigo,
-        #         'dias_trabajados': 1,
-        #         'horas_trabajadas': i.unit_amount,
-        #         'amount': (i.task_id.valor_a_pagar )* i.unit_amount,
-        #     }
-        #     lista.append(linea)
         self.env.cr.execute('select al.date,sum(al.unit_amount) as unit_amount, sum(pt.valor_a_pagar * al.unit_amount) as valor_a_pagar,al.task_id, al.empleado_id,pt.name,pt.codigo '\
             'from account_analytic_line al join project_task pt on(pt.id = al.task_id) where al.employee_id = %s and al.date >=%s and al.date <= %s'\
             'group by al.task_id,al.date,al.empleado_id,pt.name, pt.codigo',(empleado_id,str(date_from),str(date_to)))
@@ -72,47 +55,18 @@ class HrPayslip(models.Model):
                 lineas_resumidas[llave]['horas_trabajadas'] += i['horas_trabajadas']
                 lineas_resumidas[llave]['amount'] += i['amount']
         lineas = lineas_resumidas.values()
-        # for l in lista:
-        #     llave = l['task_id']
-        #     if llave not in lineas_resumidas:
-        #         lineas_resumidas[llave] = dict(l)
-        #         lineas_resumidas[llave]['task_name'] = l['task_name']
-        #         lineas_resumidas[llave]['code'] = l['code']
-        #     else:
-        #         lineas_resumidas[llave]['dias_trabajados'] += l['dias_trabajados']
-        #         lineas_resumidas[llave]['horas_trabajadas'] += l['horas_trabajadas']
-        #         lineas_resumidas[llave]['amount'] += l['amount']
-
-        # lineas = lineas_resumidas.values()
         return lineas
 
-    def get_worked_day_lines(self, contract_ids, date_from, date_to):
-        data = super(HrPayslip, self).get_worked_day_lines(contract_ids, date_from, date_to)
-        # for contract in self.env['hr.contract'].browse(contract_ids).filtered(lambda contract: contract.resource_calendar_id):
-        for contract in contract_ids:
-            datos = self.get_worked_day_task_lines(contract.id, contract.employee_id.id, date_from, date_to)
-            if datos:
-                for i in datos:
-                    data.append({
-                        'name': i['task_name'],
-                        'sequence': 10,
-                        'code': i['code'],
-                        'number_of_days': i['dias_trabajados'],
-                        'number_of_hours': i['horas_trabajadas'],
-                        'contract_id': contract.id,
-                    })
-        return data
-
-
-    def get_inputs(self, contract_ids, date_from, date_to):
-        res = super(HrPayslip, self).get_inputs(contract_ids, date_from, date_to)
-        # for contract in self.env['hr.contract'].browse(contract_ids).filtered(lambda contract: contract.working_hours):
-        for contract in contract_ids:
-            datos = self.get_worked_day_task_lines(contract.id, contract.employee_id.id, date_from, date_to)
-            for r in res:
-                for d in datos:
-                    if d['code'] == r['code']:
-                        r['amount'] = d['horas_trabajadas']
+    def compute_sheet(self):
+        for nomina in self:
+            if nomina.input_line_ids:
+                datos = self.get_worked_day_task_lines(nomina.contract_id.id, nomina.employee_id.id, nomina.date_from, nomina.date_to)
+                if datos:
+                    for d in datos:
+                        for linea in nomina.input_line_ids:
+                            if linea.input_type_id.code == d['code']:
+                                linea.amount = d['horas_trabajadas']
+        res = super(HrPayslip, self).compute_sheet()
         return res
 
 class HrPayslipRun(models.Model):
